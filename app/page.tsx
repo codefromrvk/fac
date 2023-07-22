@@ -81,7 +81,6 @@ export default function Home() {
           {/* <OrbitControls /> */}
         </Canvas>
       </section>
-
     </div>
   );
 }
@@ -158,14 +157,16 @@ const Team = () => {
             </CardHeader>
             <CardContent>Ph:7829314381</CardContent>
           </Link>
-        </Card><Card className="  bg-black bg-opacity-40 text-gray-200 ">
+        </Card>
+        <Card className="  bg-black bg-opacity-40 text-gray-200 ">
           <Link href="tel:+917829314381">
             <CardHeader>
               <CardTitle>Raghava</CardTitle>
             </CardHeader>
             <CardContent>Ph:7829314381</CardContent>
           </Link>
-        </Card><Card className="  bg-black bg-opacity-40 text-gray-200 ">
+        </Card>
+        <Card className="  bg-black bg-opacity-40 text-gray-200 ">
           <Link href="tel:+917829314381">
             <CardHeader>
               <CardTitle>Raghava</CardTitle>
@@ -186,14 +187,19 @@ const Car = () => {
 
   useFrame(() => {
     // console.log("scroll", scroll.offset * tl.current.duration());
-
+    //@ts-ignore
     tl.current.seek(scroll.offset * tl.current.duration());
   });
 
   useLayoutEffect(() => {
+    //@ts-ignore
+
     tl.current = gsap.timeline();
+    //@ts-ignore
 
     tl.current.to(
+      //@ts-ignore
+
       ref.current.rotation,
       {
         duration: 2,
@@ -242,7 +248,7 @@ const Car = () => {
   );
 };
 
-export function Ground() {
+function Ground() {
   const { theme } = useTheme();
   // thanks to https://polyhaven.com/a/rough_plasterbrick_05 !
   const [roughness, normal] = useLoader(TextureLoader, [
@@ -284,7 +290,7 @@ export function Ground() {
       <MeshReflectorMaterial
         envMapIntensity={0}
         normalMap={normal}
-        normalScale={[0.15, 0.15]}
+        // normalScale={[0.15, 0.15]}
         roughnessMap={roughness}
         dithering={true}
         color={[0.015, 0.015, 0.015]}
