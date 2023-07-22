@@ -119,7 +119,7 @@ const Business = () => {
       id="business"
       className="h-screen bg-slate-400 bg-opacity-10 px-2 py-10"
     >
-      <div className="flex-start flex">
+      <div className=" flex">
         <div className="mx-auto max-w-xl  ">
           <h2 className="gradient-text  mb-4    text-4xl ">
             Find Your Dream Car at Friends Auto Cars !
@@ -138,11 +138,11 @@ const Business = () => {
 
 const Team = () => {
   return (
-    <section className=" mx-2">
+    <section className=" mx-auto  lg:max-w-[600px]">
       <h2 className="gradient-text mb-4 mt-8 pt-10  text-4xl ">
         Contact the friends
       </h2>
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 gap-3 lg:gap-4">
         <Card className="  bg-black bg-opacity-40 text-gray-200 ">
           <Link href="tel:+917829314381">
             <CardHeader>
