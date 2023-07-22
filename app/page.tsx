@@ -101,6 +101,7 @@ const HeroText = () => {
       {/* <div> */}
       {/* text-center text-4xl font-extrabold tracking-tight lg:text-5xl */}
       <h1 className="gradient-text text-center text-4xl ">Friends Auto Cars</h1>
+      <p className="text-sm text-slate-600 tracking-widest">THINK . FEEL . DRIVE</p>
       <p className="mx-2 text-center text-xl text-muted-foreground">
         The place where you buy cars at right price
       </p>
@@ -139,7 +140,7 @@ const Team = () => {
   return (
     <section className=" mx-auto  lg:max-w-[600px]">
       <h2 className="gradient-text mb-4 mt-8 pt-10  text-4xl ">
-        Contact the friends
+        Contact us
       </h2>
       <div className="grid grid-cols-2 gap-3 lg:gap-4">
         <Card className="  bg-black bg-opacity-40 text-gray-200 ">
@@ -147,31 +148,31 @@ const Team = () => {
             <CardHeader>
               <CardTitle>Raghava</CardTitle>
             </CardHeader>
-            <CardContent>Ph:7829314381</CardContent>
+            <CardContent>Ph: 7829314381</CardContent>
           </Link>
         </Card>
         <Card className="  bg-black bg-opacity-40 text-gray-200 ">
-          <Link href="tel:+917829314381">
+          <Link href="tel:+919880717324">
             <CardHeader>
-              <CardTitle>Raghava</CardTitle>
+              <CardTitle>Padmanabha</CardTitle>
             </CardHeader>
-            <CardContent>Ph:7829314381</CardContent>
+            <CardContent>Ph: 9880717324</CardContent>
           </Link>
         </Card>
         <Card className="  bg-black bg-opacity-40 text-gray-200 ">
-          <Link href="tel:+917829314381">
+          <Link href="tel:+919886670718">
             <CardHeader>
-              <CardTitle>Raghava</CardTitle>
+              <CardTitle>Deepak</CardTitle>
             </CardHeader>
-            <CardContent>Ph:7829314381</CardContent>
+            <CardContent>Ph: 9886670718</CardContent>
           </Link>
         </Card>
         <Card className="  bg-black bg-opacity-40 text-gray-200 ">
-          <Link href="tel:+917829314381">
+          <Link href="tel:+919964071065">
             <CardHeader>
-              <CardTitle>Raghava</CardTitle>
+              <CardTitle>Charan</CardTitle>
             </CardHeader>
-            <CardContent>Ph:7829314381</CardContent>
+            <CardContent>Ph: 9964071065</CardContent>
           </Link>
         </Card>
       </div>
