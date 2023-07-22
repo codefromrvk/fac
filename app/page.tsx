@@ -208,7 +208,7 @@ const Car = () => {
       0
     );
   }, []);
-  const gltf = useLoader(GLTFLoader, "/toyota_supra_a80_1993.glb");
+  const gltf = useLoader(GLTFLoader, "/mod.glb");
   const { viewport } = useThree();
   const scaleMobile = [0.5, 0.5, 0.5];
   const scaleDesktop = [0.75, 0.75, 0.75];
