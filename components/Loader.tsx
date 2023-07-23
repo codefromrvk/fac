@@ -7,7 +7,7 @@ const Loader = () => {
   return (
     <div className=" flex flex-col items-center justify-center">
         <Image
-          className="h-full w-full animate-spin object-contain"
+          className=" animate-spin object-contain"
           src={wheel}
           alt="Loading"
           width={100} //automatically provided
