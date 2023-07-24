@@ -11,8 +11,9 @@ export const metadata: Metadata = {
   title: "Friends Auto Car",
   description:
     "Buy and sell any used vehicles in our platform. The true OLX alternative!",
-    category:""
+  
 };
+
 
 export default function RootLayout({
   children,
@@ -21,7 +22,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className} >
+      <head>
+        <meta
+          name="ahrefs-site-verification"
+          content="b50078f15f79994fc28290237a5ce6268035f3cc15b0b5fc787373398519c174"
+        />
+        <title> My title </title>
+      </head>
+      <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
           {children}
