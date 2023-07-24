@@ -10,7 +10,8 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Friends Auto Car",
   description:
-    "Buy any used vehicles in our platform. The true OLX alternative!",
+    "Buy and sell any used vehicles in our platform. The true OLX alternative!",
+    category:""
 };
 
 export default function RootLayout({
