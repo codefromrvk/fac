@@ -27,7 +27,6 @@ export default function RootLayout({
           name="ahrefs-site-verification"
           content="b50078f15f79994fc28290237a5ce6268035f3cc15b0b5fc787373398519c174"
         />
-        <title> My title </title>
       </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

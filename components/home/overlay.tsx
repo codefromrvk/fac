@@ -1,6 +1,10 @@
-import { Scroll } from "@react-three/drei";
+import { Scroll, useIntersect } from "@react-three/drei";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { Link } from "lucide-react";
+import Link from "next/link";
+import { useRef } from "react";
+import { useFrame, useThree } from "@react-three/fiber";
+import * as THREE from "three";
+import { useInView } from "framer-motion";
 
 const Overlay = () => {
   return (
@@ -54,7 +58,7 @@ const Team = () => {
     <section className=" mx-auto  lg:max-w-[600px]">
       <h2 className="gradient-text mb-4 mt-8 pt-10  text-4xl ">Contact us</h2>
       <div className="grid grid-cols-2 gap-3 lg:gap-4">
-        <Card className="  bg-black bg-opacity-40 text-gray-200 ">
+        <Card className="animate-[wiggle_1s_ease-in-out_infinite] bg-black bg-opacity-40 text-gray-200 ">
           <Link href="tel:+917829314381">
             <CardHeader>
               <CardTitle>Raghava</CardTitle>
@@ -91,4 +95,25 @@ const Team = () => {
   );
 };
 
+const ContactCard = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  return (
+    <Card
+      ref={ref}
+      className={`${
+        isInView ? "transform-none" : "-translate-y-200 transform"
+      } ${
+        isInView ? "opacity-100" : "opacity-0"
+      } duration-900 ease-cubic-bezier(0.17, 0.55, 0.55, 1) bg-black bg-opacity-40 text-gray-200 transition-all delay-500 `}
+    >
+      <Link href="tel:+917829314381">
+        <CardHeader>
+          <CardTitle>Raghava</CardTitle>
+        </CardHeader>
+        <CardContent>Ph: 7829314381</CardContent>
+      </Link>
+    </Card>
+  );
+};
 export default Overlay;
