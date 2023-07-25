@@ -35,6 +35,7 @@ export default function Home() {
   return (
     <div>
       <section className="flex  h-screen items-center  justify-center align-middle ">
+        
         <Suspense  fallback={<Loader />}>
           <Canvas>
             <ambientLight />

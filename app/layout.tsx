@@ -8,12 +8,11 @@ import Footer from "@/components/ui/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Friends Auto Car",
+  title:
+    "Friends Auto Car | Sell Car in Mangalore | Quality Second-Hand Cars | Friends Auto Cars | Best Sellers",
   description:
-    "Buy and sell any used vehicles in our platform. The true OLX alternative!",
-  
+    "Looking to buy or sell a car in Mangalore? Discover a wide selection of quality second-hand cars at Friends Auto Cars, one of the best car sellers in the area. Trusted dealers offering top-notch vehicles and exceptional customer service. Get a great price for your used car today! A true OLX alternative",
 };
-
 
 export default function RootLayout({
   children,
@@ -31,6 +30,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
+          <h1 className="hidden">
+            Trusted car dealership in Mangalore | Udupi
+          </h1>
           {children}
           <Footer />
         </ThemeProvider>

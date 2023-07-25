@@ -24,7 +24,7 @@ const HeroText = () => {
         THINK . FEEL . DRIVE
       </p>
       <p className="mx-2 text-center text-xl text-muted-foreground">
-        The place where you buy cars at right price
+        Trusted car dealership in Mangalore | Udupi
       </p>
     </section>
   );
@@ -54,64 +54,59 @@ const Business = () => {
 };
 
 const Team = () => {
+  const contactList = [
+    { name: "Raghava", number: "7829314381" },
+    {
+      name: "Padmanabha",
+      number: "9880717324",
+    },
+    {
+      name: "Deepak",
+      number: "9886670718",
+    },
+    {
+      name: "Charan",
+      number: "9964071065",
+    },
+  ];
   return (
     <section className=" mx-auto  lg:max-w-[600px]">
       <h2 className="gradient-text mb-4 mt-8 pt-10  text-4xl ">Contact us</h2>
       <div className="grid grid-cols-2 gap-3 lg:gap-4">
-        <Card className="animate-[wiggle_1s_ease-in-out_infinite] bg-black bg-opacity-40 text-gray-200 ">
-          <Link href="tel:+917829314381">
-            <CardHeader>
-              <CardTitle>Raghava</CardTitle>
-            </CardHeader>
-            <CardContent>Ph: 7829314381</CardContent>
-          </Link>
-        </Card>
-        <Card className="  bg-black bg-opacity-40 text-gray-200 ">
-          <Link href="tel:+919880717324">
-            <CardHeader>
-              <CardTitle>Padmanabha</CardTitle>
-            </CardHeader>
-            <CardContent>Ph: 9880717324</CardContent>
-          </Link>
-        </Card>
-        <Card className="  bg-black bg-opacity-40 text-gray-200 ">
-          <Link href="tel:+919886670718">
-            <CardHeader>
-              <CardTitle>Deepak</CardTitle>
-            </CardHeader>
-            <CardContent>Ph: 9886670718</CardContent>
-          </Link>
-        </Card>
-        <Card className="  bg-black bg-opacity-40 text-gray-200 ">
-          <Link href="tel:+919964071065">
-            <CardHeader>
-              <CardTitle>Charan</CardTitle>
-            </CardHeader>
-            <CardContent>Ph: 9964071065</CardContent>
-          </Link>
-        </Card>
+        {contactList.map((contact) => {
+          return (
+            <ContactCard
+              key={contact.number}
+              name={contact.name}
+              number={+contact.number}
+            />
+          );
+        })}
       </div>
     </section>
   );
 };
 
-const ContactCard = () => {
+const ContactCard: React.FC<{ name: string; number: number }> = ({
+  name,
+  number,
+}) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+  console.log({ isInView });
+  const tailwindStyle = "-translate-y-400 transform ";
   return (
     <Card
       ref={ref}
-      className={`${
-        isInView ? "transform-none" : "-translate-y-200 transform"
-      } ${
+      className={`${isInView ? "transform-none" : tailwindStyle} ${
         isInView ? "opacity-100" : "opacity-0"
       } duration-900 ease-cubic-bezier(0.17, 0.55, 0.55, 1) bg-black bg-opacity-40 text-gray-200 transition-all delay-500 `}
     >
-      <Link href="tel:+917829314381">
+      <Link href={`tel:+91${number}`}>
         <CardHeader>
-          <CardTitle>Raghava</CardTitle>
+          <CardTitle>{name}</CardTitle>
         </CardHeader>
-        <CardContent>Ph: 7829314381</CardContent>
+        <CardContent>Ph: {number}</CardContent>
       </Link>
     </Card>
   );
