@@ -28,7 +28,7 @@ export default function RootLayout({
         />
            <meta
       name="keywords"
-      content="Indian news, news app, latest headlines,India, India news, world news, breaking news"
+      content="Mangalore, secondhand cars, cheap , best place, cars and bikes, friends auto cars,nanthoor, pumpwell"
     />
       </head>
       <body className={inter.className}>
