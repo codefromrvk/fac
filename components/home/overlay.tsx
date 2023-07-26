@@ -8,11 +8,13 @@ import { useInView } from "framer-motion";
 
 const Overlay = () => {
   return (
-    <Scroll html>
+    <>
+      {/* <Scroll html> */}
       <HeroText />
       <Business />
       <Team />
-    </Scroll>
+      {/* </Scroll> */}
+    </>
   );
 };
 

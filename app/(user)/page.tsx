@@ -32,11 +32,11 @@ import Car from "@/components/home/car";
 useGLTF.preload("/toyota.glb");
 
 export default function Home() {
+  return <Overlay />;
   return (
     <div>
       <section className="flex  h-screen items-center  justify-center align-middle ">
-        
-        <Suspense  fallback={<Loader />}>
+        <Suspense fallback={<Loader />}>
           <Canvas>
             <ambientLight />
             <spotLight position={[0, 30, 20]} color="white" intensity={2} />
@@ -79,7 +79,3 @@ export default function Home() {
     </div>
   );
 }
-
-
-
-

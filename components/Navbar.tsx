@@ -16,7 +16,8 @@ import { ModeToggle } from "./custom/mode-toggle";
 
 export default function Navbar() {
   return (
-    <div className="absolute left-1/2 z-10 mt-8 -translate-x-1/2 transform  rounded-lg bg-transparent shadow-lg  ">
+    <div className="">
+    {/* <div className="absolute left-1/2 z-10 mt-8 -translate-x-1/2 transform  rounded-lg bg-transparent shadow-lg  "> */}
       <NavigationMenu className="bg-white  rounded-lg border dark:bg-[#020817] ">
         <NavigationMenuList>
           <NavigationMenuItem>
