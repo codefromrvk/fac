@@ -8,8 +8,7 @@ import Footer from "@/components/ui/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title:
-    "Friends Auto Car | Quality Second-Hand Cars ",
+  title: "Friends Auto Car | Quality Second-Hand Cars ",
   description:
     "Looking to buy or sell a car in Mangalore? Discover a wide selection of quality second-hand cars at Friends Auto Cars, one of the best car sellers in the area.",
 };
@@ -23,13 +22,9 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta
-          name="ahrefs-site-verification"
-          content="b50078f15f79994fc28290237a5ce6268035f3cc15b0b5fc787373398519c174"
+          name="keywords"
+          content="Mangalore, secondhand cars, cheap , best place, cars and bikes, friends auto cars,nanthoor, pumpwell"
         />
-           <meta
-      name="keywords"
-      content="Mangalore, secondhand cars, cheap , best place, cars and bikes, friends auto cars,nanthoor, pumpwell"
-    />
       </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
