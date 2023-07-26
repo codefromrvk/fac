@@ -21,7 +21,7 @@ const Overlay = () => {
 const HeroText = () => {
   return (
     <section className="mt-36 flex h-screen w-screen  flex-col  items-center">
-      <h1 className="gradient-text text-center text-4xl ">Friends Auto Cars</h1>
+      <h1 className="gradient-text text-center text-5xl ">Friends Auto Cars</h1>
       <p className="text-sm tracking-widest text-slate-600">
         THINK . FEEL . DRIVE
       </p>
@@ -38,7 +38,7 @@ const Business = () => {
       id="business"
       className="h-screen bg-slate-400 bg-opacity-10 px-2 py-10"
     >
-      <div className=" flex">
+      <div className=" flex items-center">
         <div className="mx-auto max-w-xl  ">
           <h2 className="gradient-text  mb-4    text-4xl ">
             Find Your Dream Car at Friends Auto Cars !
@@ -72,7 +72,7 @@ const Team = () => {
     },
   ];
   return (
-    <section className=" mx-auto  lg:max-w-[600px]">
+    <section className=" mx-auto mb-60  lg:max-w-[600px]">
       <h2 className="gradient-text mb-4 mt-8 pt-10  text-4xl ">Contact us</h2>
       <div className="grid grid-cols-2 gap-3 lg:gap-4">
         {contactList.map((contact) => {
@@ -100,9 +100,9 @@ const ContactCard: React.FC<{ name: string; number: number }> = ({
   return (
     <Card
       ref={ref}
-      className={`${isInView ? "transform-none" : tailwindStyle} ${
-        isInView ? "opacity-100" : "opacity-0"
-      } duration-900 ease-cubic-bezier(0.17, 0.55, 0.55, 1) bg-black bg-opacity-40 text-gray-200 transition-all delay-500 `}
+      // className={`${isInView ? "transform-none" : tailwindStyle} ${
+      //   isInView ? "opacity-100" : "opacity-0"
+      // } duration-900 ease-cubic-bezier(0.17, 0.55, 0.55, 1) bg-black bg-opacity-40 text-gray-200 transition-all delay-500 `}
     >
       <Link href={`tel:+91${number}`}>
         <CardHeader>

@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Friends Auto Car | Quality Second-Hand Cars ",
   description:
-    "Looking to buy or sell a car in Mangalore? Discover a wide selection of quality second-hand cars at Friends Auto Cars, one of the best car sellers in the area.",
+    "Discover a wide selection of quality second-hand cars at Friends Auto Cars, one of the best car sellers in the area.",
 };
 
 export default function RootLayout({
