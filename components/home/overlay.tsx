@@ -1,33 +1,34 @@
-import { Scroll, useIntersect } from "@react-three/drei";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import Link from "next/link";
 import { useRef } from "react";
-import { useFrame, useThree } from "@react-three/fiber";
-import * as THREE from "three";
 import { useInView } from "framer-motion";
+import { ExploreButton } from "./";
 
 const Overlay = () => {
   return (
     <>
-      {/* <Scroll html> */}
       <HeroText />
       <Business />
       <Team />
-      {/* </Scroll> */}
     </>
   );
 };
 
 const HeroText = () => {
   return (
-    <section className="mt-36 flex h-screen w-screen  flex-col  items-center">
-      <h1 className="gradient-text text-center text-5xl ">Friends Auto Cars</h1>
-      <p className="text-sm tracking-widest text-slate-600">
-        THINK . FEEL . DRIVE
-      </p>
-      <p className="mx-2 text-center text-xl text-muted-foreground">
-        Trusted car dealership in Mangalore | Udupi
-      </p>
+    <section className=" flex h-screen w-screen  flex-col  items-center justify-center">
+      <div className="">
+        <h1 className="gradient-text text-center text-5xl ">
+          Friends Auto Cars
+        </h1>
+        <p className="text-center text-sm tracking-widest text-slate-600">
+          THINK . FEEL . DRIVE
+        </p>
+        <p className="mx-2 text-center text-xl text-muted-foreground">
+          Trusted car dealership in Mangalore | Udupi
+        </p>
+      </div>
+      <ExploreButton />
     </section>
   );
 };

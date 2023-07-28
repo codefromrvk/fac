@@ -16,16 +16,23 @@ import { ModeToggle } from "./custom/mode-toggle";
 
 export default function Navbar() {
   return (
-    <div className="">
-    {/* <div className="absolute left-1/2 z-10 mt-8 -translate-x-1/2 transform  rounded-lg bg-transparent shadow-lg  "> */}
-      <NavigationMenu className="bg-white  rounded-lg border dark:bg-[#020817] ">
-        <NavigationMenuList>
+      <NavigationMenu className= "lg:flex lg:justify-between lg:border-b-2 mt-4 bg-white  dark:bg-[#020817] ">
+          <NavigationMenuList  className=" border-2 lg:border-0 rounded-lg"  >
           <NavigationMenuItem>
             <Link href="/" legacyBehavior passHref>
               <NavigationMenuLink
                 className={`${navigationMenuTriggerStyle()} text-xl`}
               >
                 Home
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link href="/inventory" legacyBehavior passHref>
+              <NavigationMenuLink
+                className={`${navigationMenuTriggerStyle()} text-xl`}
+              >
+                Inventory
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
@@ -38,11 +45,13 @@ export default function Navbar() {
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
-          <NavigationMenuItem>
-            <ModeToggle />
+          <NavigationMenuItem className="block lg:hidden">
+            <ModeToggle/>
           </NavigationMenuItem>
         </NavigationMenuList>
+        <div className="hidden lg:block">
+        <ModeToggle />
+        </div>
       </NavigationMenu>
-    </div>
   );
 }
