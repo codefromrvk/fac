@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const AboutPage = () => {
   return (
-    <div className="min-h-screen pt-28 lg:mx-56">
+    <div className="min-h-screen  lg:mx-56">
       <div className="mx-auto px-4 py-8">
         <h1 className="mb-4 text-2xl font-semibold">Who We Are</h1>
         <p className="text-slate-400">

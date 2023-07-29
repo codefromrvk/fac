@@ -13,11 +13,17 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { ModeToggle } from "./custom/mode-toggle";
+import { useParams, useRouter } from "next/navigation";
 
 export default function Navbar() {
+  const params = useParams();
+  const { vehicleId } = params;
+  
+
   return (
-      <NavigationMenu className= "lg:flex lg:justify-between lg:border-b-2 mt-4 bg-white  dark:bg-[#020817] ">
-          <NavigationMenuList  className=" border-2 lg:border-0 rounded-lg"  >
+    !vehicleId && (
+      <NavigationMenu className="mt-4 bg-white dark:bg-[#020817] lg:flex lg:justify-between  lg:border-b-2 ">
+        <NavigationMenuList className=" rounded-lg border-2 lg:border-0">
           <NavigationMenuItem>
             <Link href="/" legacyBehavior passHref>
               <NavigationMenuLink
@@ -46,12 +52,13 @@ export default function Navbar() {
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem className="block lg:hidden">
-            <ModeToggle/>
+            <ModeToggle />
           </NavigationMenuItem>
         </NavigationMenuList>
         <div className="hidden lg:block">
-        <ModeToggle />
+          <ModeToggle />
         </div>
       </NavigationMenu>
+    )
   );
 }

@@ -22,15 +22,17 @@ export default defineType({
     defineField({
       name: 'image',
       title: 'Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
+      type: 'document',
+     
       fields: [
         {
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative Text',
+          title: 'carPhotos',
+          name: 'car',
+          type: 'array',
+          of: [{type: 'image'}],
+          options: {
+            hotspot: true,
+          },
         }
       ]
     }),
@@ -48,10 +50,10 @@ export default defineType({
       ],
     }),
   ],
-  preview: {
-    select: {
-      title: 'name',
-      media: 'image',
-    },
-  },
+  // preview: {
+  //   select: {
+  //     title: 'name',
+  //     media: 'image',
+  //   },
+  // },
 })

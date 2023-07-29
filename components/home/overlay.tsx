@@ -37,12 +37,12 @@ const Business = () => {
   return (
     <section
       id="business"
-      className="h-screen bg-slate-400 bg-opacity-10 px-2 py-10"
+      className="h-screen bg-slate-400 bg-opacity-10 px-2 py-10 flex flex-col  items-center justify-center"
     >
       <div className=" flex items-center">
         <div className="mx-auto max-w-xl  ">
           <h2 className="gradient-text  mb-4    text-4xl ">
-            Find Your Dream Car at Friends Auto Cars !
+            Find Your Dream Car at Friends Auto Cars!
           </h2>
           <p className="text-lg text-muted-foreground">
             Unbeatable prices. Quality used cars. Friendly team. Easy financing.
@@ -96,7 +96,6 @@ const ContactCard: React.FC<{ name: string; number: number }> = ({
 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
-  console.log({ isInView });
   const tailwindStyle = "-translate-y-400 transform ";
   return (
     <Card

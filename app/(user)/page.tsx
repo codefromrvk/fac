@@ -1,16 +1,18 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import Overlay from "@/components/home/overlay";
 
 // useGLTF.preload("/toyota.glb");
 
 export default function Home() {
   return (
-    <div className="mx-1">
-      {/* <ExploreButton/> */}
-      <Overlay />
-    </div>
+    <Suspense fallback={<>loading</>}>
+      <div className="mx-1">
+        {/* <ExploreButton/> */}
+        <Overlay />
+      </div>
+    </Suspense>
   );
 }
 

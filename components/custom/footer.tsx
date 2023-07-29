@@ -2,7 +2,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg- my-2 flex flex-col ">
+    <footer className="bg- my-2 flex flex-col">
       <div className="flex justify-between px-2  text-center ">
         <div className="text-xs  font-semibold text-muted-foreground">
           Friends Auto Cars
