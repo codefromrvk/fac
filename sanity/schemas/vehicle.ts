@@ -23,7 +23,7 @@ export default defineType({
             name: 'kmDriven',
             title: 'KM Driven',
             type: 'number',
-            validation: Rule => Rule.required()
+            validation: Rule => Rule.required(),
         }),
         defineField({
             name: 'details',
@@ -36,7 +36,7 @@ export default defineType({
             name: 'price',
             title: 'Price',
             type: 'number',
-            validation: Rule => Rule.required()
+            validation: Rule => Rule.required(),
         }),
         defineField({
             name: 'ownerNumber',
@@ -52,7 +52,7 @@ export default defineType({
                     { title: "4+", value: "4+" },
                 ],
             },
-            validation: Rule => Rule.required()
+            validation: Rule => Rule.required(),
         }),
         defineField({
             name: 'fuel',
@@ -61,14 +61,14 @@ export default defineType({
             description: "CNG/Diesel/Petrol/Electric/LPG",
             options: {
                 list: [
-                    { title: "CNG", value: "cng" },
+                    { title: "CNG", value: "CNG" },
                     { title: "Diesel", value: "diesel" },
                     { title: "Petrol", value: "petrol" },
                     { title: "Electric", value: "electric" },
-                    { title: "LPG", value: "lpg" },
+                    { title: "LPG", value: "LPG" },
                 ],
             },
-            validation:Rule=>Rule.required()
+            validation: Rule => Rule.required()
         }),
         defineField({
             name: 'transmission',
@@ -95,6 +95,13 @@ export default defineType({
         //   }
         // }),
         defineField({
+            name: 'user',
+            title: 'User',
+            type: 'reference',
+            to: { type: 'user' },
+            validation: Rule => Rule.required()
+        }),
+        defineField({
             type: 'array',
             name: 'photo',
             title: 'Photos',
@@ -111,7 +118,7 @@ export default defineType({
                     // }]
                 },
             ],
-            validation:Rule=>Rule.required(),
+            validation: Rule => Rule.required(),
             options: {
                 layout: 'grid'
             }

@@ -1,8 +1,8 @@
 export type CarItemType = {
-    id:string,
+    id: string,
     title: string,
     url: string,
-    price:number,
+    price: number,
     className?: string
 }
 export type PriceType = {
@@ -17,6 +17,15 @@ type Base = {
     _rev: string
 }
 
+type ReferenceType = {
+    "_ref": string,
+    "_type": string
+}
+type PhotoType = {
+    "_type": string,
+    "_key": string,
+    "asset": ReferenceType
+}
 export interface VehicleType extends Base {
     price: number
     details: string
@@ -26,5 +35,9 @@ export interface VehicleType extends Base {
     year: number
     ownerNumber: string
     kmDriven: number
-    photo: any
+    photo: PhotoType[]
+    user: {
+        name: string
+        phoneNumber: number
+    }
 }

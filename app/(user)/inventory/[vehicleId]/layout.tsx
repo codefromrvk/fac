@@ -4,7 +4,7 @@ import BackButton from "./components/back-button";
 
 const VehicleLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div>
+    <div className="h-full ">
       <BackButton/>
       {children}
     </div>

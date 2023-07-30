@@ -25,7 +25,7 @@ const HeroText = () => {
           THINK . FEEL . DRIVE
         </p>
         <p className="mx-2 text-center text-xl text-muted-foreground">
-          Trusted car dealership in Mangalore | Udupi
+          Buy and sell used cars in Mangalore | Udupi
         </p>
       </div>
       <ExploreButton />

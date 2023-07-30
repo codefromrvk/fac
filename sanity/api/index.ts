@@ -11,11 +11,11 @@ const getAllVehicles = () => {
 }
 const getVehicleById = ({ id }: { id: string }) => {
     return client.fetch(`*[_type=="vehicle"&& _id==$id ][0]{
-        _id,
-        photo,
-          name,
-          price
-      }`, {
+        ...,
+          user->{
+            name,phoneNumber
+          } 
+        }`, {
         id
     })
 

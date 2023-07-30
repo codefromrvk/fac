@@ -11,5 +11,5 @@ export default function InventoryLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <div className="m-4">{children}</div>;
+  return <div className="m-4 px-3 min-h-screen">{children}</div>;
 }

@@ -8,9 +8,9 @@ import Footer from "@/components/custom/footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: { 
-    template: '%s | Friends Auto Cars',
-    default: "Friends Auto Car | Quality Second-Hand Cars " 
+  title: {
+    template: "%s | Friends Auto Cars",
+    default: "Friends Auto Car | Quality Second-Hand Cars ",
   },
   description:
     "Discover a wide selection of quality second-hand cars at Friends Auto Cars, one of the best car sellers in the area.",
@@ -29,7 +29,7 @@ export default function RootLayout({
           content="Mangalore, secondhand cars, cheap , best place, cars and bikes, friends auto cars,nanthoor, pumpwell"
         />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} `}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
           <h1 className="hidden">

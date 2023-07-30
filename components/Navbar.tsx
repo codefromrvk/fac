@@ -18,12 +18,10 @@ import { useParams, useRouter } from "next/navigation";
 export default function Navbar() {
   const params = useParams();
   const { vehicleId } = params;
-  
-
   return (
     !vehicleId && (
-      <NavigationMenu className="mt-4 bg-white dark:bg-[#020817] lg:flex lg:justify-between  lg:border-b-2 ">
-        <NavigationMenuList className=" rounded-lg border-2 lg:border-0">
+      <NavigationMenu className="mt-4 w-full bg-white px-4 dark:bg-[#020817] lg:flex  lg:justify-between lg:border-b-2   ">
+        <NavigationMenuList className="rounded-lg gap-2 lg:border-0">
           <NavigationMenuItem>
             <Link href="/" legacyBehavior passHref>
               <NavigationMenuLink
