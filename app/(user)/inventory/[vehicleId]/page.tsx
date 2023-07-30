@@ -78,6 +78,7 @@ const VehicleProfile = ({ params }: VehiclePropsType) => {
             {photo.map((photoItem, i) => {
               return (
                 <Image
+                  key={i}
                   className="aspect-square rounded-lg "
                   src={urlForImage(photoItem).url()}
                   alt="Car unselected image"
@@ -92,12 +93,12 @@ const VehicleProfile = ({ params }: VehiclePropsType) => {
         </div>
         <div className="flex flex-col justify-around">
           <h4 className=" my-3 text-3xl font-semibold">{name}</h4>
-          <div className="flex h-5 items-center   space-x-2 my-1">
+          <div className="my-1 flex h-5   items-center space-x-2">
             <div className="flex items-center ">
               <label htmlFor="fuel" className=" font-medium">
                 Fuel:
               </label>
-              <div id="fuel" className="uppercase ml-1">
+              <div id="fuel" className="ml-1 uppercase">
                 {fuel}
               </div>
             </div>
@@ -107,7 +108,9 @@ const VehicleProfile = ({ params }: VehiclePropsType) => {
               <label htmlFor="fuel" className=" font-medium">
                 Km Driven :{" "}
               </label>
-              <div id="fuel" className="ml-1">{kmDriven}</div>
+              <div id="fuel" className="ml-1">
+                {kmDriven}
+              </div>
             </div>
             <Separator orientation="vertical" />
             <div className="flex items-center">
@@ -118,20 +121,20 @@ const VehicleProfile = ({ params }: VehiclePropsType) => {
             </div>
           </div>
 
-          <div className="flex items-center my-1">
+          <div className="my-1 flex items-center">
             <label htmlFor="ownerNumber" className=" font-medium">
               No. of owners :{" "}
             </label>
             <div id="ownerNumber">{ownerNumber}</div>
           </div>
-          <div className="flex items-center my-1">
+          <div className="my-1 flex items-center">
             <label htmlFor="transmission" className=" font-medium">
               Transmission :{" "}
             </label>
             <div id="transmission">{transmission}</div>
           </div>
 
-          <div className="flex items-center my-1">
+          <div className="my-1 flex items-center">
             <label htmlFor="details" className=" font-medium">
               Details :{" "}
             </label>
@@ -139,7 +142,7 @@ const VehicleProfile = ({ params }: VehiclePropsType) => {
           </div>
         </div>
         <div className="flex flex-col ">
-          <div className="text-xl font-medium py-2">
+          <div className="py-2 text-xl font-medium">
             Rs. {price.toLocaleString("en-IN")}
           </div>
           <Button className="my-2">
