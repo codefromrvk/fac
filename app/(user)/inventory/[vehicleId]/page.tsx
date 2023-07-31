@@ -93,7 +93,7 @@ const VehicleProfile = ({ params }: VehiclePropsType) => {
         </div>
         <div className="flex flex-col justify-around">
           <h4 className=" my-3 text-3xl font-semibold">{name}</h4>
-          <div className="my-1 flex h-5   items-center space-x-2">
+          <div className="my-1 flex  h-5 items-center space-x-2 ">
             <div className="flex items-center ">
               <label htmlFor="fuel" className=" font-medium">
                 Fuel:
@@ -106,19 +106,19 @@ const VehicleProfile = ({ params }: VehiclePropsType) => {
 
             <div className="flex items-center">
               <label htmlFor="fuel" className=" font-medium">
-                Km Driven :{" "}
+                Km Driven :
               </label>
               <div id="fuel" className="ml-1">
                 {kmDriven}
               </div>
             </div>
-            <Separator orientation="vertical" />
-            <div className="flex items-center">
-              <label htmlFor="year" className=" font-medium">
-                Year :
-              </label>
-              <div id="year">{year}</div>
-            </div>
+            {/* <Separator orientation="vertical" /> */}
+          </div>
+          <div className="flex items-center">
+            <label htmlFor="year" className=" font-medium">
+              Year :
+            </label>
+            <div id="year">{year}</div>
           </div>
 
           <div className="my-1 flex items-center">
@@ -131,15 +131,19 @@ const VehicleProfile = ({ params }: VehiclePropsType) => {
             <label htmlFor="transmission" className=" font-medium">
               Transmission :{" "}
             </label>
-            <div id="transmission">{transmission}</div>
+            <div id="transmission" className="uppercase">
+              {transmission}
+            </div>
           </div>
 
-          <div className="my-1 flex items-center">
-            <label htmlFor="details" className=" font-medium">
-              Details :{" "}
-            </label>
-            <div id="details">{details}</div>
-          </div>
+          {details && (
+            <div className="my-1 flex items-center">
+              <label htmlFor="details" className=" font-medium">
+                Details :
+              </label>
+              <div id="details">{details}</div>
+            </div>
+          )}
         </div>
         <div className="flex flex-col ">
           <div className="py-2 text-xl font-medium">

@@ -19,11 +19,12 @@ const CarItem: React.FC<CarItemType> = ({
       <Card>
         <div
           className={cn(
-            " relative max-h-60 overflow-hidden  rounded-t-lg border-2 ",
+            " relative   max-h-60 overflow-hidden  rounded-t-lg border-2 ",
             className
           )}
         >
           <Image
+          className="mx-auto"
             src={url}
             alt={title}
             // height and width wont matter coz of object contain

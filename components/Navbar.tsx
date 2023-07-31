@@ -19,12 +19,12 @@ export default function Navbar() {
   const params = useParams();
   const path = useRouter();
   const { vehicleId } = params;
-  console.log({params,path});
-  
+  console.log({ params, path });
+
   return (
     !vehicleId && (
-      <NavigationMenu className="mt-4 w-full  px-4 lg:flex  lg:justify-between lg:border-b-2   ">
-        <NavigationMenuList className="gap-3 rounded-lg lg:border-0">
+      <NavigationMenu className="mt-4  lg:flex  lg:justify-between lg:border-b-2 ">
+        <NavigationMenuList className=" rounded-lg lg:border-0">
           <NavigationMenuItem>
             <Link href="/" legacyBehavior passHref>
               <NavigationMenuLink
