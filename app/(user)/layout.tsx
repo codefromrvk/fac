@@ -29,7 +29,7 @@ export default function RootLayout({
           content="Mangalore, secondhand cars, cheap , best place, cars and bikes, friends auto cars,nanthoor, pumpwell"
         />
       </head>
-      <body className={`${inter.className} `}>
+      <body className={`${inter.className} bg-muted/40 `}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
           <h1 className="hidden">

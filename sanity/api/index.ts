@@ -1,6 +1,8 @@
 import { client } from "../lib/client"
 
 const getAllVehicles = () => {
+  console.log("api called");
+  
     return client.fetch(`*[_type=="vehicle"]{
         _id,
         photo,

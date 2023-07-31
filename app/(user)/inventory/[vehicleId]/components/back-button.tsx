@@ -6,7 +6,7 @@ const BackButton = () => {
   const router = useRouter();
   return (
     <span
-      className="mb-2 inline-block  rounded-full border   p-4"
+      className="mb-2 bg-popover inline-block  rounded-full border   p-4"
       onClick={() => {
         router.back();
       }}
