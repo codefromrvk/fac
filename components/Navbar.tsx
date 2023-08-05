@@ -23,7 +23,7 @@ export default function Navbar() {
 
   return (
     !vehicleId && (
-      <NavigationMenu className="mt-4  lg:flex  lg:justify-between lg:border-b-2 ">
+      <NavigationMenu className="mt-4   ">
         <NavigationMenuList className=" rounded-lg lg:border-0">
           <NavigationMenuItem>
             <Link href="/" legacyBehavior passHref>

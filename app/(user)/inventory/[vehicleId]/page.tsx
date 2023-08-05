@@ -1,34 +1,26 @@
-"use client";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useFetchData } from "@/hooks";
 import { getVehicleById } from "@/sanity/api";
-import { urlForImage } from "@/sanity/lib/image";
 import { VehicleType } from "@/types/inventory.types";
-import Image from "next/image";
-import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
+
+import Gallery from "./components/gallery";
+import ActionButton from "./components/action-button";
+import { client } from "@/sanity/lib/client";
 
 type VehiclePropsType = {
   params: {
     vehicleId: string;
   };
 };
-const VehicleProfile = ({ params }: VehiclePropsType) => {
-  const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(0);
+const VehicleProfile = async ({ params }: VehiclePropsType) => {
   const { vehicleId } = params;
-  const getData = useCallback(
-    () => getVehicleById({ id: vehicleId }),
-    [vehicleId]
-  );
-  const { data: vehicle }: { data: VehicleType } = useFetchData(getData);
 
-  const handlePhotoClick = (idx: number) => {
-    setSelectedPhotoIndex(idx);
-  };
+  const vehicle: VehicleType = await getVehicleById({
+    id: vehicleId,
+  });
 
   if (!vehicle) {
     return (
@@ -63,34 +55,8 @@ const VehicleProfile = ({ params }: VehiclePropsType) => {
   return (
     <div className="flex h-full flex-col py-2">
       <Card className="px-3 py-2">
-        <div>
-          <div className="h-72 ">
-            <Image
-              className="h-full rounded-lg object-contain"
-              src={urlForImage(photo[selectedPhotoIndex]).fit("clip").url()}
-              alt="Car main image"
-              // height and width wont matter coz of object contain
-              height={600}
-              width={1250}
-            />
-          </div>
-          <div className="mt-4 flex gap-2 overflow-x-auto">
-            {photo.map((photoItem, i) => {
-              return (
-                <Image
-                  key={i}
-                  className="aspect-square rounded-lg "
-                  src={urlForImage(photoItem).url()}
-                  alt="Car unselected image"
-                  // height and width wont matter coz of object contain
-                  height={80}
-                  width={80}
-                  onClick={() => handlePhotoClick(i)}
-                />
-              );
-            })}
-          </div>
-        </div>
+        <Gallery photo={photo} />
+
         <div className="flex flex-col justify-around">
           <h4 className=" my-3 text-3xl font-semibold">{name}</h4>
           <div className="my-1 flex  h-5 items-center space-x-2 ">
@@ -145,14 +111,7 @@ const VehicleProfile = ({ params }: VehiclePropsType) => {
             </div>
           )}
         </div>
-        <div className="flex flex-col ">
-          <div className="py-2 text-xl font-medium">
-            Rs. {price.toLocaleString("en-IN")}
-          </div>
-          <Button className="my-2">
-            <Link href={`tel:+91${user.phoneNumber}`}>Contact now</Link>
-          </Button>
-        </div>
+        <ActionButton price={price} phone={user.phoneNumber} />
       </Card>
     </div>
   );

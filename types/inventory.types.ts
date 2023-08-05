@@ -1,3 +1,10 @@
+export type Base = {
+    _type: string
+    _id: string
+    _updatedAt: Date
+    _createdAt: Date
+    _rev: string
+}
 export type CarItemType = {
     id: string,
     title: string,
@@ -9,19 +16,13 @@ export type PriceType = {
     amount: number
 }
 
-type Base = {
-    _type: string
-    _id: string
-    _updatedAt: Date
-    _createdAt: Date
-    _rev: string
-}
 
-type ReferenceType = {
+
+export type ReferenceType = {
     "_ref": string,
     "_type": string
 }
-type PhotoType = {
+export type PhotoType = {
     "_type": string,
     "_key": string,
     "asset": ReferenceType

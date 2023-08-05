@@ -9,7 +9,7 @@ export default defineType({
     fields: [
         defineField({
             name: 'name',
-            title: 'Name',
+            title: 'Vehicle Name',
             type: 'string',
             validation: Rule => Rule.required()
         }),
@@ -99,12 +99,12 @@ export default defineType({
             title: 'User',
             type: 'reference',
             to: { type: 'user' },
-            validation: Rule => Rule.required()
+            validation: Rule => Rule.required(),
         }),
         defineField({
-            type: 'array',
             name: 'photo',
             title: 'Photos',
+            type: 'array',
             of: [
                 {
                     type: 'image', options: { hotspot: true },
@@ -116,21 +116,36 @@ export default defineType({
                     //         isHighlighted: true // &lt;-- make this field easily accessible          
                     //     }
                     // }]
+
                 },
             ],
             validation: Rule => Rule.required(),
             options: {
-                layout: 'grid'
+                layout: 'grid',
             }
+            // , components: {
+            //     input: MultiSelectImages,
+            // },
+
+            // preview: {
+            //     select: {
+            //         name: 'name',
+            //         year: 'year',
+            //         fuel: 'fuel',
+            //     },
+            //     // prepare({name,year, fuel}) {
+            //     //   return {
+            //     //     name,
+            //     //     year,
+            //     //     fuel
+            //     //   }
+            //     // },
+            // },
+
         })
 
     ],
-    // preview: {
-    //   select: {
-    //     title: 'name',
-    //     media: 'image',
-    //   },
-    // },
+
 })
 
 
