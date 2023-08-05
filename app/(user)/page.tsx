@@ -1,18 +1,18 @@
-"use client";
-
-import React, { Suspense } from "react";
 import Overlay from "@/components/home/overlay";
+import { Wrapper } from "@/components/home/box";
+import { ThemeProvider } from "@/components/theme-provider";
+import HomeProvider from "@/components/home/home-provider";
 
 // useGLTF.preload("/toyota.glb");
 
 export default function Home() {
   return (
-    <Suspense fallback={<>loading</>}>
-      <div className="mx-1">
-        {/* <ExploreButton/> */}
-        <Overlay />
-      </div>
-    </Suspense>
+    <div className="overflow-y-auto ">
+      {/* <HomeProvider> */}
+      <Overlay />
+      {/* </HomeProvider> */}
+      {/* <Wrapper /> */}
+    </div>
   );
 }
 

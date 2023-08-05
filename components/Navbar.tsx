@@ -14,6 +14,8 @@ import {
 } from "@/components/ui/navigation-menu";
 import { ModeToggle } from "./custom/mode-toggle";
 import { useParams, useRouter } from "next/navigation";
+import { Button } from "./ui/button";
+import { useState } from "react";
 
 export default function Navbar() {
   const params = useParams();
@@ -21,10 +23,11 @@ export default function Navbar() {
   const { vehicleId } = params;
   console.log({ params, path });
 
+  // absolute left-[50%] -translate-x-[50%]
   return (
     !vehicleId && (
-      <NavigationMenu className="mt-4   ">
-        <NavigationMenuList className=" rounded-lg lg:border-0">
+      <NavigationMenu className={`mt-4      `}>
+        <NavigationMenuList className="  rounded-lg  lg:gap-3">
           <NavigationMenuItem>
             <Link href="/" legacyBehavior passHref>
               <NavigationMenuLink

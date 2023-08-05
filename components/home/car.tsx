@@ -1,3 +1,4 @@
+"use client";
 import {
   ContactShadows,
   Decal,
@@ -9,7 +10,7 @@ import {
 } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { gsap } from "gsap";
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Group, Object3D, Vector3 } from "three";
 
 const Car: React.FC = () => {
@@ -18,19 +19,35 @@ const Car: React.FC = () => {
   const tl = useRef<gsap.core.Timeline | null>(null);
   const scroll = useScroll();
   const { viewport } = useThree();
-  const scaleMobile =new Vector3(0.3, 0.3, 0.3);
+  const scaleMobile = new Vector3(0.3, 0.3, 0.3);
   //  [0.5, 0.5, 0.5];
   const scaleDesktop = new Vector3(0.5, 0.5, 0.5);
   // [0.75, 0.75, 0.75];
   console.log("wid", viewport.width);
-  
 
   // Determine the current device type based on the viewport size
   const isMobile = viewport.width <= 14.14; // Adjust the breakpoint as needed
+  const [scrollPosition, setScrollPosition] = useState(0);
+  // const handleScroll = () => {
+  //   const position = window.pageYOffset;
+  //   setScrollPosition(position);
+  // };
 
+  // useEffect(() => {
+  //   window.addEventListener("scroll", handleScroll, { passive: true });
+
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
   // useFrame(() => {
   //   tl.current?.seek(scroll.offset * tl.current?.duration());
   // });
+  useFrame((state) => {
+    const t = state.clock.getElapsedTime();
+    // ref.current.rotation.set(Math.PI / 2)
+    // ref.current.position.y = (1 + Math.sin(t / 1.5)) / 10
+  });
 
   // useLayoutEffect(() => {
   //   tl.current = gsap.timeline();
@@ -64,16 +81,15 @@ const Car: React.FC = () => {
   // console.log({nodes});
 
   return (
-
-      <Gltf
-        src="/toyota.glb"
-        rotation={[0, Math.PI / 2, 0]}
-        position={[0, 16, 0]}
-        receiveShadow
-        castShadow
-        scale={isMobile ? scaleMobile : scaleDesktop}
-      />
-
+    <Gltf
+      ref={ref}
+      src="/toyota.glb"
+      rotation={[0, Math.PI / 2, 0]}
+      position={[0, 6, 0]}
+      receiveShadow
+      castShadow
+      scale={isMobile ? scaleMobile : scaleDesktop}
+    />
   );
 };
 

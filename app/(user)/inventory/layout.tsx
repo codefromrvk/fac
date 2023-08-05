@@ -12,11 +12,5 @@ export default function InventoryLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <div className="my-4 min-h-screen px-3 ">
-      {/* <Suspense fallback={<div className="bg-red-600">loading...</div>}> */}
-        {children}
-        {/* </Suspense> */}
-    </div>
-  );
+  return <div className="my-4 min-h-screen px-3 ">{children}</div>;
 }

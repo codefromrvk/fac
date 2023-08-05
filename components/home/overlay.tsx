@@ -1,22 +1,21 @@
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import Link from "next/link";
-import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { ExploreButton } from "./";
 
 const Overlay = () => {
   return (
-    <>
+    <div className="relative z-10 overflow-y-auto ">
       <HeroText />
       <Business />
       <Team />
-    </>
+    </div>
   );
 };
 
 const HeroText = () => {
   return (
-    <section className=" flex h-screen w-screen  flex-col  items-center justify-center">
+    <section className=" flex h-screen w-screen  flex-col  items-center  justify-center  ">
       <div className="">
         <h1 className="gradient-text text-center text-5xl ">
           Friends Auto Cars
@@ -37,7 +36,7 @@ const Business = () => {
   return (
     <section
       id="business"
-      className="h-screen bg-slate-400 bg-opacity-10 px-2 py-10 flex flex-col  items-center justify-center"
+      className="flex h-screen  flex-col items-center justify-center bg-slate-400 bg-opacity-10  px-2 py-10"
     >
       <div className=" flex items-center">
         <div className="mx-auto max-w-xl  ">
@@ -73,7 +72,7 @@ const Team = () => {
     },
   ];
   return (
-    <section className=" mx-auto mb-60  lg:max-w-[600px]">
+    <section className=" mx-auto mb-60  lg:max-w-[600px] ">
       <h2 className="gradient-text mb-4 mt-8 pt-10  text-4xl ">Contact us</h2>
       <div className="grid grid-cols-2 gap-3 lg:gap-4">
         {contactList.map((contact) => {
@@ -94,12 +93,11 @@ const ContactCard: React.FC<{ name: string; number: number }> = ({
   name,
   number,
 }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  // const isInView = useInView(ref, { once: true });
   const tailwindStyle = "-translate-y-400 transform ";
   return (
     <Card
-      ref={ref}
+      className="bg-transparent"
       // className={`${isInView ? "transform-none" : tailwindStyle} ${
       //   isInView ? "opacity-100" : "opacity-0"
       // } duration-900 ease-cubic-bezier(0.17, 0.55, 0.55, 1) bg-black bg-opacity-40 text-gray-200 transition-all delay-500 `}

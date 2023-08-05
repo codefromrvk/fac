@@ -29,14 +29,11 @@ export default function RootLayout({
           content="Mangalore, secondhand cars, cheap , best place, cars and bikes, friends auto cars,nanthoor, pumpwell"
         />
       </head>
-      <body className={`${inter.className} bg-muted/40 `}>
+      <body className={`${inter.className}  flex  max-h-screen  flex-col overflow-clip  `}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
-          <h1 className="hidden">
-            Trusted car dealership in Mangalore | Udupi
-          </h1>
           {children}
-          <Footer />
+          {/* <Footer /> */}
         </ThemeProvider>
       </body>
     </html>

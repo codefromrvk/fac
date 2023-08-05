@@ -3,12 +3,9 @@ import React, { useCallback, useMemo, useState } from "react";
 import { CarItem } from "@/components/inventory";
 import { getAllVehicles } from "@/sanity/api";
 import { VehicleType } from "@/types/inventory.types";
-import urlBuilder from "@sanity/image-url";
 import { urlForImage } from "@/sanity/lib/image";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
-import { Label } from "@/components/ui/label";
 import { useFetchData } from "@/hooks";
 import { Skeleton } from "@/components/ui/skeleton";
 import { BiSad } from "react-icons/bi";
@@ -46,8 +43,8 @@ const Inventory = () => {
   }
 
   return (
-    <div className="h-full">
-      <div className=" flex w-full max-w-sm items-center ">
+    <div className="">
+      <div className=" mx-auto flex w-full items-center">
         <Input
           id="search"
           className="peer my-4 rounded-r-none  "
@@ -66,8 +63,7 @@ const Inventory = () => {
         {/* </Label> */}
       </div>
       {Boolean(filteredVehicles.length) ? (
-        <div className=" grid gap-3 lg:grid-cols-4 ">
-          {/* <h1 className="text-xl font-semibold text-center ">All Cars</h1> */}
+        <div className=" grid gap-3  lg:grid-cols-4 ">
           {filteredVehicles.map((vehicle: VehicleType) => {
             const { _id, name, photo, price } = vehicle;
             return (
