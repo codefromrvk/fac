@@ -1,111 +1,69 @@
-"use client";
-import {
-  ContactShadows,
-  Decal,
-  Gltf,
-  Shadow,
-  SoftShadows,
-  useGLTF,
-  useScroll,
-} from "@react-three/drei";
+import { useGLTF, useScroll } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
-import { gsap } from "gsap";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { Group, Object3D, Vector3 } from "three";
+import { easing } from "maath";
+import { useLayoutEffect, useMemo, useRef } from "react";
+import { Box3, Group, Mesh, Vector3 } from "three";
+import { HERO_ROT_Y, carHeading, samplePose } from "./choreography";
 
-const Car: React.FC = () => {
+// Length of the car in world units; the scene is laid out around this.
+const CAR_LENGTH = 4.6;
+
+const Car = () => {
   const { scene } = useGLTF("/toyota.glb");
-  const ref = useRef<Object3D | null>(null);
-  const tl = useRef<gsap.core.Timeline | null>(null);
+  const ref = useRef<Group>(null);
   const scroll = useScroll();
-  const { viewport } = useThree();
-  const scaleMobile = new Vector3(0.3, 0.3, 0.3);
-  //  [0.5, 0.5, 0.5];
-  const scaleDesktop = new Vector3(0.5, 0.5, 0.5);
-  // [0.75, 0.75, 0.75];
-  console.log("wid", viewport.width);
+  const narrow = useThree((state) => state.size.width < 768);
 
-  // Determine the current device type based on the viewport size
-  const isMobile = viewport.width <= 14.14; // Adjust the breakpoint as needed
-  const [scrollPosition, setScrollPosition] = useState(0);
-  // const handleScroll = () => {
-  //   const position = window.pageYOffset;
-  //   setScrollPosition(position);
-  // };
+  // Normalise the model so it is CAR_LENGTH long, centred, and resting on y=0.
+  // useGLTF caches the scene, so on a repeat visit it still carries the scale
+  // and offset from last time; measure an untransformed copy instead.
+  const { scale, offset } = useMemo(() => {
+    const model = scene.clone();
+    model.position.set(0, 0, 0);
+    model.rotation.set(0, 0, 0);
+    model.scale.set(1, 1, 1);
+    model.updateMatrixWorld(true);
+    const box = new Box3().setFromObject(model);
+    const size = box.getSize(new Vector3());
+    const center = box.getCenter(new Vector3());
+    const scale = CAR_LENGTH / Math.max(size.x, size.z);
+    return {
+      scale,
+      offset: new Vector3(-center.x, -box.min.y, -center.z).multiplyScalar(scale),
+    };
+  }, [scene]);
 
-  // useEffect(() => {
-  //   window.addEventListener("scroll", handleScroll, { passive: true });
+  // Coming back from another page, start from the hero angle instead of
+  // spinning back from wherever the car was left.
+  useLayoutEffect(() => {
+    carHeading.rotY = HERO_ROT_Y;
+  }, []);
 
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
-  // useFrame(() => {
-  //   tl.current?.seek(scroll.offset * tl.current?.duration());
-  // });
-  useFrame((state) => {
-    const t = state.clock.getElapsedTime();
-    // ref.current.rotation.set(Math.PI / 2)
-    // ref.current.position.y = (1 + Math.sin(t / 1.5)) / 10
+  useLayoutEffect(() => {
+    scene.traverse((child) => {
+      if ((child as Mesh).isMesh) {
+        child.castShadow = true;
+        child.receiveShadow = true;
+      }
+    });
+  }, [scene]);
+
+  useFrame((_, delta) => {
+    const car = ref.current;
+    if (!car) return;
+    const pose = samplePose(scroll.offset, narrow);
+    easing.damp(car.position, "x", pose.carX, 0.2, delta);
+    easing.damp(car.rotation, "y", pose.carRotY, 0.2, delta);
+    carHeading.rotY = car.rotation.y;
   });
 
-  // useLayoutEffect(() => {
-  //   tl.current = gsap.timeline();
-
-  //   if (ref.current?.rotation) {
-  //     tl.current.to(
-  //       ref.current.rotation,
-  //       {
-  //         duration: 2,
-  //         y: -Math.PI / 3,
-  //       },
-  //       0
-  //     );
-  //   }
-  // }, []);
-
-  // const handleScroll = () => {
-  //   // const model = gltf.scene;
-  //   const scrollY = window.scrollY;
-  // };
-
-  // useEffect(() => {
-  //   // Attach the scroll event listener when the component mounts
-  //   window.addEventListener("scroll", handleScroll);
-
-  //   // Remove the scroll event listener when the component unmounts
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
-  // console.log({nodes});
-
   return (
-    <Gltf
-      ref={ref}
-      src="/toyota.glb"
-      rotation={[0, Math.PI / 2, 0]}
-      position={[0, 6, 0]}
-      receiveShadow
-      castShadow
-      scale={isMobile ? scaleMobile : scaleDesktop}
-    />
+    <group ref={ref} rotation={[0, HERO_ROT_Y, 0]}>
+      <primitive object={scene} scale={scale} position={offset} />
+    </group>
   );
 };
 
-export default Car;
+useGLTF.preload("/toyota.glb");
 
-{
-  /* <mesh castShadow  geometry={nodes} material={materials.lambert1} material-roughness={1} {...props} dispose={null}>
-      <Decal position={[0, 0.04, 0.15]} rotation={[0, 0, 0]} scale={0.15} />
-    </mesh> 
-    // <primitive 
-    //   // ref={ref}
-    //   object={scene}
-    //   rotation={[0, Math.PI / 2, 0]}
-    //   position={[0, 5, 0]}
-    //   scale={isMobile ? scaleMobile : scaleDesktop}
-    // />
-    );
-*/
-}
+export default Car;

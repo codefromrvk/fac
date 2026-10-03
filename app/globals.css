@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Neutral zinc palette; backgrounds match the 3D scene backdrops. */
+  :root {
+    --background: 240 4.8% 95.9%;
+    --foreground: 240 10% 3.9%;
+
+    --muted: 240 4.8% 92%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --border: 240 5.9% 88%;
+    --input: 240 5.9% 88%;
+
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 92%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --accent: 240 4.8% 92%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --ring: 240 5.9% 10%;
+
+    --radius: 0.5rem;
+
+    /* Motion tokens; Tailwind's ease-out / ease-in-out map to these. */
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
+    color-scheme: light;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --ring: 240 4.9% 83.9%;
+
+    color-scheme: dark;
+  }
+  .gradient-text {
+    @apply animate-text bg-gradient-to-r from-zinc-900 via-red-600 to-zinc-900 bg-clip-text font-black text-transparent dark:from-white dark:via-red-400 dark:to-white;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Theme switch: the toggle animates a circular clip on the new snapshot. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Page enter: opacity only. A transform here would become the containing block
+   for the fixed 3D canvas on the home page and collapse it mid-animation. */
+@keyframes page-in {
+  from {
+    opacity: 0;
+  }
+}
+.page-enter {
+  animation: page-in 220ms var(--ease-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gradient-text {
+    animation: none;
+  }
+}

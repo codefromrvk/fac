@@ -1,6 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
+  // Only apply hover styles on devices that can hover, so taps on touch
+  // screens don't leave cards stuck in their hover state.
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
@@ -52,6 +57,10 @@ module.exports = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      transitionTimingFunction: {
+        out: "var(--ease-out)",
+        "in-out": "var(--ease-in-out)",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -80,8 +89,9 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        text: "text 5s ease infinite",
-        wiggle: 'wiggle 1s ease-in-out infinite',
+        // Two passes then rest: background-position repaints the whole
+        // headline every frame, so it shouldn't run forever.
+        text: "text 6s var(--ease-in-out) 2",
       },
     },
   },
